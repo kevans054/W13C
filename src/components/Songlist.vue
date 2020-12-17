@@ -3,7 +3,7 @@ December 16, 2020
 Assignment W13C VuePlaylist-->
 <template>
     <div>
-        <h1 v-html="heading"></h1>
+        <!-- <h1 v-html="heading"></h1> -->
         <input type="text"
         v-model="newSong"
         @keypress.enter="addSong">
@@ -17,28 +17,26 @@ Assignment W13C VuePlaylist-->
                 <input type="checkbox" v-bind:name="`Mysongs.title[${index}]`">
             </li>
         </ul>
-        <h4>There are {{ songCount }} songs in the selection list</h4>
-        <button @click="clearSongs">Clear Songs</button>
+        <!-- <h4>There are {{ SongCount }} songs in the selection list</h4> -->
+        
+        <button v-if="clearSongs = myclearSongs">Clear Songs</button>
     </div>
 </template>
 
 <script>
+// import PageBody from '../Pagebody.vue'
 export default {
   name: "SongList",
   props: {
-      mySongs: Array,
-
+    //   mySongs: Array,
+      myclearSongs : Boolean,
+      SongCount : Number
+    
   },  
 
   data() {
     return {
         newSong: ''
-    }
-  },
-
-    computed: {
-        songCount() {
-            return this.mySongs.length;
         }
     },
 
@@ -47,8 +45,9 @@ export default {
             this.$emit('add', this.newSong);
             this.newSong = '';
         },
-        clearSongss() {
+        clearSongs() {
             this.$emit('clear');
+           
         },
         isEven(n) {
             if ((n + 1) % 2 == 0) {
@@ -56,13 +55,7 @@ export default {
             }
             return false;
         },
-        // removeSong(index) {
-            // this is bad - instead emit an event to the parent,
-            // and modify the data there instead. Don't manipulate props
-            // directly
-            // console.log('Target', index);
-            // this.songs.splice(index, 1);
-        // }
+        
     }
 };
 </script>

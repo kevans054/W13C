@@ -7,21 +7,18 @@ Assignment W13C VuePlaylist-->
         <h1>My Song List</h1>
          <page-body 
          :mySongs="mySongs"
-        @add="doAddItem" 
-        @clear="doClearItems"></page-body>
-        <!-- <song-list 
-        :mySongs="mySongs"
-        @add="doAddItem" 
-        @clear="doClearItems">
-        </song-list> -->
-           
+        @add="doAddSong" 
+        @clear="doClearSong"
+   
+        
+        ></page-body>
+        <song-list :mysongCount="songCount"></song-list>
     </div>
 </template>
 
 <script>
-
-// import SongList from './components/Songlist.vue';
 import PageBody from './components/Pagebody.vue';
+import SongList from './components/Songlist.vue'
 export default {
     name: 'App',
 
@@ -56,6 +53,22 @@ export default {
                 ]
         }
     },
+
+    computed: {
+        songCount(songCount) {
+            this.mySongs.length;
+            return{
+                songCount
+            }
+        }
+        },
+
+    clearSongs() {
+        return {
+            isSiblingClicked: false
+        }
+    },
+
     methods: {
         doAddSong(song) {
             this.mySongs.splice(0, 0, song);
@@ -64,10 +77,11 @@ export default {
             this.mySongs = [];
             }
     },
+
     components: {
-        // SongList,
-        PageBody
-    },
+        PageBody,
+        SongList
+    }
 }
 </script>
 
