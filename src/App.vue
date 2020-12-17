@@ -8,17 +8,16 @@ Assignment W13C VuePlaylist-->
          <page-body 
          :mySongs="mySongs"
         @add="doAddSong" 
-        @clear="doClearSong"
-   
-        
-        ></page-body>
-        <song-list :mysongCount="songCount"></song-list>
+        @clear="doClearSong"></page-body>
+        <!-- <song-list :mysongCount="songCount"></song-list> -->
+        <!-- <play-list></play-list> -->
     </div>
 </template>
 
 <script>
 import PageBody from './components/Pagebody.vue';
-import SongList from './components/Songlist.vue'
+// import SongList from './components/Songlist.vue';
+// import PlayList from './components/Playlist.vue';
 export default {
     name: 'App',
 
@@ -55,11 +54,10 @@ export default {
     },
 
     computed: {
-        songCount(songCount) {
+        songCount() {
             this.mySongs.length;
-            return{
-                songCount
-            }
+            return{}
+        
         }
         },
 
@@ -80,7 +78,8 @@ export default {
 
     components: {
         PageBody,
-        SongList
+        // SongList,
+        // PlayList
     }
 }
 </script>

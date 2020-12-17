@@ -4,7 +4,7 @@ Assignment W13C VuePlaylist-->
 <template>
     <div>
         <!-- <h1 v-html="heading"></h1> -->
-        <input type="text"
+        <!-- <input type="text"
         v-model="newSong"
         @keypress.enter="addSong">
         <ul>
@@ -16,7 +16,7 @@ Assignment W13C VuePlaylist-->
                 :key="index">
                 <input type="checkbox" v-bind:name="`Mysongs.title[${index}]`">
             </li>
-        </ul>
+        </ul> -->
         <!-- <h4>There are {{ SongCount }} songs in the selection list</h4> -->
         
         <button v-if="clearSongs = myclearSongs">Clear Songs</button>
@@ -28,7 +28,7 @@ Assignment W13C VuePlaylist-->
 export default {
   name: "SongList",
   props: {
-    //   mySongs: Array,
+      mySongs: Array,
       myclearSongs : Boolean,
       SongCount : Number
     
