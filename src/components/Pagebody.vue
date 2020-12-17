@@ -1,20 +1,20 @@
+<!--Karen Evans
+December 16, 2020
+Assignment W13C VuePlaylist-->
 <template>
  <div>
-      <!-- <app-vue></app-vue> -->
-  
-     <!-- Page-Body from page-body.vue -->
+      <ul>
+        <li v-for="(mySong, index) in mySongs" :key="index">{{ mySong.title +''+ mySong.artist }}</li>
+     </ul>
      </div>
 </template>
 
 <script>
-// import AppVue from '../App.vue'
 
-// import SongList from './/Songlist.vue';
 export default {
     name: 'page-body',
-    components: {
-      // SongList,
-      // AppVue
+    props: {
+     mySongs: Array
     }
      
 }

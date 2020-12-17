@@ -5,30 +5,25 @@ Assignment W13C VuePlaylist-->
 
     <div id="app">
         <h1>My Song List</h1>
-         <page-body></page-body>
-        <song-list 
+         <page-body 
+         :mySongs="mySongs"
+        @add="doAddItem" 
+        @clear="doClearItems"></page-body>
+        <!-- <song-list 
         :mySongs="mySongs"
-        :title="title"
-        :artist="artist"
-        :genre="genre"
         @add="doAddItem" 
         @clear="doClearItems">
-        </song-list>
+        </song-list> -->
            
     </div>
 </template>
 
 <script>
 
-import SongList from './components/Songlist.vue';
+// import SongList from './components/Songlist.vue';
 import PageBody from './components/Pagebody.vue';
 export default {
     name: 'App',
-    components: {
-        SongList,
-        PageBody
-    },
-
 
     data () {
         return {
@@ -67,8 +62,12 @@ export default {
             },
         doClearSong() {
             this.mySongs = [];
-            },
-    }
+            }
+    },
+    components: {
+        // SongList,
+        PageBody
+    },
 }
 </script>
 

@@ -1,3 +1,6 @@
+<!--Karen Evans
+December 16, 2020
+Assignment W13C VuePlaylist-->
 <template>
     <div>
         <h1 v-html="heading"></h1>
@@ -23,10 +26,8 @@
 export default {
   name: "SongList",
   props: {
-      mySongs: { 
-          type:Array,
-          required: true
-      }
+      mySongs: Array,
+
   },  
 
   data() {
