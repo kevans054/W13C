@@ -2,34 +2,72 @@
 December 16, 2020
 Assignment W13C VuePlaylist-->
 <template>
- <div>
-   <play-list></play-list>
-      <ul>
-        <li v-for="(mySong, index) in mySongs" :key="index">{{ mySong.title + '    by     ' + mySong.artist }}
-                <input type="checkbox" v-bind:name="`Mysongs.title[${index}]`"></li>
-     </ul>
-     <h4>There are {{songCount}} songs in the selection list</h4>
-        <button @click="$emit('clearSongs')">Clear Songs</button>
-       
-     </div>
+  <div id="pagebody">
+    <h1>My Christmas PlayList</h1>
+    <play-list :songs="playlistSongs" @remove="addToSonglist"></play-list>
+    <h1>The Christmas Song List</h1>
+    <song-list :songs="songs" @add="addToPlaylist"></song-list>
+  </div>
 </template>
 
 <script>
-// import SongList from '../Songlist.vue'
-import PlayList from './Playlist.vue'
+import SongList from "./Songlist.vue";
+import PlayList from "./Playlist.vue";
 export default {
-    name: 'page-body',
-    components: {
-      PlayList
+  name: "page-body",
+  components: {
+    PlayList,
+    SongList,
+  },
+  data() {
+    return {
+      playlistSongs: [],
+      songs: [
+        {
+          title: "Do They Know Its Christmas",
+          artist: "Bandaid",
+        },
+        {
+          title: "A Holy Joly Christmas",
+          artist: "Burl Ives",
+        },
+        {
+          title: "Last Christmas",
+          artist: "Wham",
+        },
+        {
+          title: "God Rest Ye Merry Gentlemen",
+          artist: "Pentatonix",
+        },
+        {
+          title: "The Little Drummer Boy",
+          artist: "Bing Crosby",
+        },
+      ],
+    };
+  },
+
+  computed: {
+    songCount() {
+      return this.Songs.length;
     },
-    props: {
-     mySongs: Array,
-     songCount: String,
-     clearSongs: Boolean
-    }
-}
+  },
+
+  methods: {
+    addToPlaylist(index) {
+      let song = this.songs.splice(index, 1)[0];
+      this.playlistSongs.splice(0, 0, song);
+    },
+    addToSonglist(index) {
+      let song = this.playlistSongs.splice(index, 1)[0];
+      this.songs.splice(0, 0, song);
+    },
+  },
+};
 </script>
 
 <style scoped>
-
+div {
+  background-color: red;
+}
 </style>

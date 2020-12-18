@@ -2,66 +2,42 @@
 December 16, 2020
 Assignment W13C VuePlaylist-->
 <template>
-    <div>
-        <!-- <h1 v-html="heading"></h1> -->
-        <!-- <input type="text"
-        v-model="newSong"
-        @keypress.enter="addSong">
-        <ul>
-            <li v-if="newSong">{{ newSong }}</li>
-            <li 
-                v-for="(mySong, index) in mySongs"
-                @click="removeSong(index)"
-                :class="[ 'mySongs', {'even': isEven(index)} ]"
-                :key="index">
-                <input type="checkbox" v-bind:name="`Mysongs.title[${index}]`">
-            </li>
-        </ul> -->
-        <!-- <h4>There are {{ SongCount }} songs in the selection list</h4> -->
-        
-        <button v-if="clearSongs = myclearSongs">Clear Songs</button>
-    </div>
+  <div id="Songlist">
+    <ul>
+      <li
+        v-for="(song, index) in songs"
+        :key="index"
+        @click="moveToMyPlaylist(index)"
+      >
+        {{ song.title }} - {{ song.artist }}
+      </li>
+    </ul>
+    <h4>There are {{ songCount }} songs in the Christmas Song list</h4>
+  </div>
 </template>
 
 <script>
-// import PageBody from '../Pagebody.vue'
 export default {
   name: "SongList",
   props: {
-      mySongs: Array,
-      myclearSongs : Boolean,
-      SongCount : Number
-    
-  },  
-
-  data() {
-    return {
-        newSong: ''
-        }
+    songs: Array,
+  },
+  computed: {
+    songCount() {
+      return this.songs.length;
     },
+  },
 
-    methods: {
-        addSong() {
-            this.$emit('add', this.newSong);
-            this.newSong = '';
-        },
-        clearSongs() {
-            this.$emit('clear');
-           
-        },
-        isEven(n) {
-            if ((n + 1) % 2 == 0) {
-                return true;
-            }
-            return false;
-        },
-        
-    }
+  methods: {
+    moveToMyPlaylist(index) {
+      this.$emit("add", index);
+    },
+  },
 };
 </script>
 
 <style scoped>
-.even {
-    background-color: rgb(231, 127, 231);
+ul {
+  list-style-type: none;
 }
 </style>
