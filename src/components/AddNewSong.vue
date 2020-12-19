@@ -1,9 +1,9 @@
 <template>
   <div>
+      <h4>Add a new song!</h4>
     <input type="text" placeholder="Title" v-model="newTitle" />
     <input type="text" placeholder="Artist" v-model="newArtist" />
-
-    <button type="submit">Add</button>
+    <button type="submit" @click="addNewSong">Add</button>
   </div>
 </template>
 <script>
@@ -12,8 +12,8 @@ export default {
 
   data() {
     return {
-      newTitle: "",
-      newArtist: "",
+      newTitle: '',
+      newArtist: '',
     };
   },
 
@@ -24,8 +24,8 @@ export default {
           title: this.newTitle,
           artist: this.newArtist,
         });
-        this.newTitle = "";
-        this.newArtist = "";
+        this.newTitle = '';
+        this.newArtist = '';
       }
     }
   }

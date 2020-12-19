@@ -2,7 +2,7 @@
 December 16, 2020
 Assignment W13C VuePlaylist-->
 <template>
-  <div id="SongList">
+  <div id="SongList" class="default">
     <ul>
       <li
         v-for="(song, index) in songs"
@@ -48,6 +48,7 @@ export default {
 </script>
 
 <style scoped>
+.default {cursor: default;}
 ul {
   list-style-type: none;
 }

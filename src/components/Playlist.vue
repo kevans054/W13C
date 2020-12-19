@@ -2,17 +2,17 @@
 December 16, 2020
 Assignment W13C VuePlaylist-->
 <template>
-  <div id="PlayList">
+  <div id="PlayList" class="default">
     <ul>
       <li
-        v-for="(Song, index) in Songs"
+        v-for="(song, index) in songs"
         :key="index"
         @click="removeFromPlaylist(index)"
       >
         {{ song.title }} - {{ song.artist }}
       </li>
     </ul>
-    <h4>There are {{ playlistSongCount }} songs in your Christmas Playlist</h4>
+    <!-- <h4>There are {{ playlistSongsCount }} songs in your Christmas Playlist</h4> -->
   </div>
 </template>
 
@@ -20,9 +20,9 @@ Assignment W13C VuePlaylist-->
 export default {
   name: "PlayList",
   computed: {
-    playlistSongCount() {
-      return this.playlistSongs.length;
-    },
+    // playlistSongsCount() {
+    //   return this.playlistSongs.length;
+    // },
     songs()
       {
         return this.$store.state.playlistSongs;
@@ -38,6 +38,7 @@ export default {
 </script>
 
 <style scoped>
+.default {cursor: default;}
 ul {
   list-style-type: none;
 }

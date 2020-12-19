@@ -3,10 +3,14 @@ December 16, 2020
 Assignment W13C VuePlaylist-->
 <template>
   <div id="pagebody">
-    <h1>My Christmas PlayList</h1>
-    <play-list></play-list>
-    <h1>The Christmas Song List</h1>
-    <song-list></song-list>
+    <div>
+      <h1>The Christmas Song List</h1>
+      <song-list></song-list>
+    </div>
+    <div>
+      <h1>My Christmas PlayList</h1>
+      <play-list></play-list>
+    </div>
   </div>
 </template>
 
@@ -28,7 +32,11 @@ export default {
 </script>
 
 <style scoped>
-div {
+#pagebody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  padding: 1rem;
   background-color: red;
 }
 </style>

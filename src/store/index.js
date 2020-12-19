@@ -38,8 +38,7 @@ export default new Vuex.Store({
       let song = state.songs.splice(index, 1)[0];
       state.playlistSongs.splice(0, 0, song);
     },
-    removeFromPlaylist(state, index)
-      {
+    removeFromPlaylist(state, index) {
         let song = state.playlistSongs.splice(index, 1)[0];
         state.songs.splice(0, 0, song);
       },
