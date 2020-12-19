@@ -34,7 +34,7 @@ export default new Vuex.Store({
     addNewSong(state, song) {
       state.songs.splice(0, 0, song);
     },
-    moveToMyPlaylist(state, index) {
+    addToMyPlaylist(state, index) {
       let song = state.songs.splice(index, 1)[0];
       state.playlistSongs.splice(0, 0, song);
     },

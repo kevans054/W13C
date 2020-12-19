@@ -23,12 +23,6 @@ export default {
   data() {
     return {
     }
-  },
-
-  computed: {
-    songCount() {
-      return this.$store.state.songs.length;
-    }
   }
 };
 </script>

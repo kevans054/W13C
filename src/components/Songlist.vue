@@ -2,12 +2,12 @@
 December 16, 2020
 Assignment W13C VuePlaylist-->
 <template>
-  <div id="Songlist">
+  <div id="SongList">
     <ul>
       <li
         v-for="(song, index) in songs"
         :key="index"
-        @click="moveToMyPlaylist(index)"
+        @click="addToMyPlaylist(index)"
       >
         {{ song.title }} - {{ song.artist }}
       </li>
@@ -34,14 +34,14 @@ export default {
       },
   
     songCount() {
-      return this.$store.state.songs.length;
+      return this.songs.length;
     },
   },
 
   methods: {
 
-    moveToMyPlaylist(index) {
-      this.$store.commit("moveToMyPlaylist", index);
+    addToMyPlaylist(index) {
+      this.$store.commit("addToMyPlaylist", index);
     },
   },
 };

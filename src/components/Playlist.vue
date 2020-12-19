@@ -2,14 +2,14 @@
 December 16, 2020
 Assignment W13C VuePlaylist-->
 <template>
-  <div>
+  <div id="PlayList">
     <ul>
       <li
-        v-for="(song, index) in sSongs"
+        v-for="(Song, index) in Songs"
         :key="index"
         @click="removeFromPlaylist(index)"
       >
-        {{ songs.title }} - {{ songs.artist }}
+        {{ song.title }} - {{ song.artist }}
       </li>
     </ul>
     <h4>There are {{ playlistSongCount }} songs in your Christmas Playlist</h4>
@@ -21,7 +21,7 @@ export default {
   name: "PlayList",
   computed: {
     playlistSongCount() {
-      return this.$store.state.playlistSongs.length;
+      return this.playlistSongs.length;
     },
     songs()
       {
@@ -29,11 +29,8 @@ export default {
       },
   },
   methods: {
-    moveToMyPlaylist(index) {
-     this.$store.commit("moveToMyPlaylist", index);
-    },
+   
     removeFromPlaylist(index) {
-      // splice the song out of playlistSongs and in to songs
       this.$store.commit("removeFromPlaylist", index);
     },
   },
