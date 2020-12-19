@@ -13,24 +13,35 @@ Assignment W13C VuePlaylist-->
       </li>
     </ul>
     <h4>There are {{ songCount }} songs in the Christmas Song list</h4>
+    <add-new-song></add-new-song>
   </div>
 </template>
 
 <script>
+import AddNewSong from './AddNewSong';
+
 export default {
   name: "SongList",
-  props: {
-    songs: Array,
+ 
+ components: {
+    AddNewSong
   },
+
   computed: {
+    songs()
+      {
+        return this.$store.state.songs;
+      },
+  
     songCount() {
-      return this.songs.length;
+      return this.$store.state.songs.length;
     },
   },
 
   methods: {
+
     moveToMyPlaylist(index) {
-      this.$emit("add", index);
+      this.$store.commit("moveToMyPlaylist", index);
     },
   },
 };
